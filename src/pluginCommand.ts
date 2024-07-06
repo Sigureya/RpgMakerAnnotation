@@ -1,4 +1,3 @@
-import type { StructBase } from "./structOld";
 import type { ValueType } from "./templates";
 import type { AnnotationTypes } from "./typesTable";
 
@@ -23,20 +22,6 @@ export function createPluginCommand<T extends Parametors, Result>(
     func: func,
   } as const;
 }
-
-const structDummy: StructBase = {
-  struct: "aaa",
-  params: {
-    age: {
-      type: "number",
-      default: 0,
-    },
-    name: {
-      type: "string",
-      default: "",
-    },
-  },
-} as const;
 
 // TODO:別ファイルに移すべきだが、置き場所が決まらないので一時的にここに置く
 const TestFunc = createPluginCommand(
