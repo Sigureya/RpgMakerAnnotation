@@ -1,17 +1,15 @@
-import { AnnotationBaseWidhDefault } from "./annotationPropety";
+import { AnnotationBase } from "./annotationPropety";
 import { ValueOf } from "../metatypes";
 
-export interface NumberArg extends AnnotationBaseWidhDefault {
+export interface NumberArg extends AnnotationBase {
   min?: number;
   max?: number;
   digit?: number;
   default: number;
   type: "number";
 }
-export interface DataIndexArg<Name extends string>
-  extends AnnotationBaseWidhDefault {
+export interface DataIndexArg<Name extends string> extends AnnotationBase {
   type: Name;
-
   default: number;
 }
 
@@ -25,7 +23,7 @@ export interface Troop extends DataIndexArg<"troop"> {}
 export interface Class extends DataIndexArg<"class"> {}
 export interface State extends DataIndexArg<"state"> {}
 export interface CommonEvent extends DataIndexArg<"common_event"> {}
-type Primitive_Numbers = ValueOf<
+export type Primitive_Numbers = ValueOf<
   [
     NumberArg,
     Actor,

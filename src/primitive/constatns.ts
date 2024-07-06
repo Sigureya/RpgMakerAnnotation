@@ -1,10 +1,11 @@
-import type { Annotation } from "../annotation";
+import { NumberArg } from "./numbers";
+import { StringArg } from "./strings";
 
-export const ANNOTATION_DEFAULT_STRING: Annotation<string> = {
+export const ANNOTATION_STRING: StringArg = {
   type: "string",
   default: "",
 } as const;
-export const ANNOTATION_DEFAULT_NUMBER: Annotation<number> = {
+export const ANNOTATION_NUMBER: NumberArg = {
   type: "number",
   default: 0,
 } as const;

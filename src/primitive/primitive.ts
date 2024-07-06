@@ -1,8 +1,7 @@
-import type { AnnotationBaseWidhDefault } from "./annotationPropety";
-import { ValueOf } from "../metatypes";
+import type { AnnotationBase } from "./annotationPropety";
 export * from "./numbers";
 export * from "./strings";
-export interface BooleanAnnotation extends AnnotationBaseWidhDefault {
+export interface BooleanAnnotation extends AnnotationBase {
   default: boolean;
   type: "boolean";
   on?: string;
@@ -13,8 +12,7 @@ interface ValuePair<T> {
   value: T;
 }
 
-interface SelectAnnotation<T extends number | string>
-  extends AnnotationBaseWidhDefault {
+interface SelectAnnotation<T extends number | string> extends AnnotationBase {
   type: "select";
   default: T;
   options: ValuePair<T>[];

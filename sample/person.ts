@@ -1,7 +1,7 @@
 // TODO:struct<Person>で、Schema用のオブジェクトを書ける構造にしたい
 
+import { AnnotationBase } from "src/primitive/annotationPropety";
 import type { Annotation, Struct6 } from "../src/annotation";
-import type { AnnotationBaseWidhDefault } from "../src/primitive/annotationPropety";
 
 // ツクールの@paramとか用の
 export interface Person {
@@ -49,7 +49,7 @@ const personAnnotation: Annotation<Person> = {
   //  pocket: POCKET,
 };
 export function createDefaultFromAnnotation<T extends object>(
-  annotation: Annotation<T> & Record<string, AnnotationBaseWidhDefault>
+  annotation: Annotation<T> & Record<string, AnnotationBase>
 ) {
   const entries = Object.entries(annotation).map((member) => {
     return {

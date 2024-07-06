@@ -1,4 +1,4 @@
-import type { StructBase } from "./struct";
+import type { StructBase } from "./structOld";
 import type { ValueType } from "./templates";
 import type { AnnotationTypes } from "./typesTable";
 

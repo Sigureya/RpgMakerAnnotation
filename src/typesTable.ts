@@ -8,7 +8,7 @@ export type TypeTable_Primitive = {
   skill: P.Skill;
   number: P.NumberArg;
   combo: P.ComboAnnotation;
-  string: P.StringAnnotation;
+  string: P.StringArg;
   multiline_string: P.MultilineString;
   select: P.Select;
   boolean: P.BooleanAnnotation;
