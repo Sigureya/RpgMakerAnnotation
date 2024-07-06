@@ -12,6 +12,7 @@ import {
   Troop,
   Weapon,
 } from "./numbers";
+import { Select } from "./select";
 
 export const ANNOTATION_STRING: StringArg = {
   type: "string",
@@ -83,3 +84,9 @@ export const ANNOTATION_COMBO: ComboAnnotation = {
   default: "",
   options: [],
 } as const;
+
+export const ANNOTATION_SELECT_NUMBER: Select<number> = {
+  type: "select",
+  default: 0,
+  options: [],
+};
