@@ -1,7 +1,7 @@
-import type { AnnotationBase } from "./annotationBase";
+import type { Annotation } from "./annotationBase";
 export * from "./numbers";
 export * from "./strings";
-export interface BooleanAnnotation extends AnnotationBase {
+export interface BooleanAnnotation extends Annotation {
   default: boolean;
   type: "boolean";
   on?: string;

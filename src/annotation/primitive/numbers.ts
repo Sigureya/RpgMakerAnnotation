@@ -1,13 +1,13 @@
-import { AnnotationBase } from "./annotationBase";
-
-export interface NumberArg extends AnnotationBase {
+import { Annotation } from "./annotationBase";
+import { Select } from "./select";
+export interface NumberArg extends Annotation {
   min?: number;
   max?: number;
   digit?: number;
   default: number;
   type: "number";
 }
-export interface DataIndexArg<Name extends string> extends AnnotationBase {
+export interface DataIndexArg<Name extends string> extends Annotation {
   type: Name;
   default: number;
 }
@@ -29,9 +29,10 @@ export type Primitive_Numbers = [
   Armor,
   Skill,
   Item,
-  WakeLock,
+  Weapon,
   Troop,
   Class,
   State,
-  CommonEvent
+  CommonEvent,
+  Select<number>
 ][number];
