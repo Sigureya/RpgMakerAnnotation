@@ -22,6 +22,6 @@
       "@api/*": ["src/api/*"]
     }
   },
-  "include": ["src/*.ts", "sample/person.ts"],
+  "include": ["src/*.ts", "sample/person.ts", "src/annotation/struct.ts"],
   "exclude": ["game/js/plugins/exclude/**/*.js"]
 }

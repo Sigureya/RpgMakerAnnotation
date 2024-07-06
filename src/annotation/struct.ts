@@ -1,4 +1,4 @@
-import { ReomoveArray } from "./metatypes";
+import { ReomoveArray } from "../metatypes";
 import { Primitive } from "./primitive";
 
 interface ObjectArray<T> {

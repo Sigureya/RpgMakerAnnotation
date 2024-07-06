@@ -1,5 +1,5 @@
 import type { ValueOf } from "./metatypes";
-import type * as P from "./primitive/primitive";
+import type * as P from "./annotation/primitive/primitive";
 import type { ToArrayAnnotation } from "./templates";
 
 export type TypeTable_Primitive = {

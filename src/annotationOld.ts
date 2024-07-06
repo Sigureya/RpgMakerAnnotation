@@ -1,6 +1,6 @@
 import type { ValueOf } from "./metatypes";
 import type { TypeTable_Array, TypeTable_Primitive } from "./typesTable";
-import type { AnnotationBase } from "./primitive/annotationBase";
+import type { AnnotationBase } from "./annotation/primitive/annotationBase";
 type StructName<Name extends string> = `struct<${Name}>`;
 interface AnnotationObjectArray<T extends object[], Name extends string> {
   default: ReomoveArray<T>[];
