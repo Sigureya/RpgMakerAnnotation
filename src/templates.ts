@@ -1,4 +1,4 @@
-import type { BooleanAnnotation, Select } from "./primitive";
+import type { BooleanAnnotation, Select } from "./primitive/primitive";
 
 type TT<V> = { type: string; default: V };
 

@@ -1,4 +1,4 @@
-import { AnnotationBaseWidhDefault } from "../annotationPropety";
+import { AnnotationBaseWidhDefault } from "./annotationPropety";
 import { ValueOf } from "../metatypes";
 
 export interface NumberArg extends AnnotationBaseWidhDefault {

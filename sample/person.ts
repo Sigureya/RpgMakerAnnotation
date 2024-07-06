@@ -1,7 +1,7 @@
 // TODO:struct<Person>で、Schema用のオブジェクトを書ける構造にしたい
 
 import type { Annotation, Struct6 } from "../src/annotation";
-import type { AnnotationBase } from "../src/annotationPropety";
+import type { AnnotationBaseWidhDefault } from "../src/primitive/annotationPropety";
 
 // ツクールの@paramとか用の
 export interface Person {
@@ -28,11 +28,11 @@ const ITEM_ANNOTATION: Struct6<Item, "Item"> = {
   },
 };
 
-const POCKET: Annotation<Item[]> = {
-  type: "struct<Item>",
-  default: [],
-  _struct: ITEM_ANNOTATION.params,
-};
+// const POCKET: Annotation<Item[]> = {
+//   type: "struct<Item>",
+//   default: [],
+//   _struct: ITEM_ANNOTATION.params,
+// };
 // TODO:配列やオブジェクトの場合、アノテーションは不要にする
 // 定義オブジェクトはクラスにした方が良さそう
 const personAnnotation: Annotation<Person> = {
@@ -49,7 +49,7 @@ const personAnnotation: Annotation<Person> = {
   //  pocket: POCKET,
 };
 export function createDefaultFromAnnotation<T extends object>(
-  annotation: Annotation<T> & Record<string, AnnotationBase>
+  annotation: Annotation<T> & Record<string, AnnotationBaseWidhDefault>
 ) {
   const entries = Object.entries(annotation).map((member) => {
     return {

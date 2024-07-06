@@ -1,17 +1,16 @@
-import type { ValueOf } from "@utils/types";
+import type { ValueOf } from "./metatypes";
 import type { TypeTable_Array, TypeTable_Primitive } from "./typesTable";
-import type { AnnotationBase } from "./annotationPropety";
+import type { AnnotationBaseWidhDefault } from "./primitive/annotationPropety";
 type StructName<Name extends string> = `struct<${Name}>`;
 interface AnnotationObjectArray<T extends object[], Name extends string> {
   default: ReomoveArray<T>[];
-  type: StructName<Name>;
-  _struct: Annotation<ReomoveArray<T>>;
+  type: AnnotationBaseWidhDefault;
 }
 type ReomoveArray<T> = T extends Array<unknown> ? T[number] : T;
 
 type AnnotationTypesDetail<
   Type,
-  Table extends Record<string, AnnotationBase>
+  Table extends Record<string, AnnotationBaseWidhDefault>
 > = ValueOf<{
   [Key in keyof Table]: Type extends Table[Key]["default"] ? Table[Key] : never;
 }>;

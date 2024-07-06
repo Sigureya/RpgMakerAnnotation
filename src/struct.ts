@@ -1,22 +1,23 @@
-import type { AnnotationTypes } from "./typesTable";
+import { AnnotationBaseWidhDefault } from "./primitive/annotationPropety";
+import { ReomoveArray } from "./metatypes";
+export * from "./structOld"; //一時しのぎ。あとで修正予定
 
-export interface StructBase {
-  struct: string;
-  // type: `struct<${this["struct"]}>`;
-  params: Record<string, AnnotationTypes>;
+type Primitive = AnnotationBaseWidhDefault;
+
+export interface ObjectArray<T> {
+  type: "array";
+  //もしTが配列だと複雑化するので、常に配列を解除する
+  array: Struct5<ReomoveArray<T>>;
+  default: ReomoveArray<T>[];
 }
 
-export interface Struct {
-  struct: string;
-  type: string;
-  params: Record<string, AnnotationTypes>;
-}
-
-function createStruct(name: string) {
-  return {
-    type: `struct<${name}>`,
+export interface Struct5<T> {
+  structName: string;
+  params: {
+    [Key in keyof T]: T[Key] extends object[]
+      ? ObjectArray<T[Key]>
+      : T[Key] extends object
+      ? Struct5<T[Key]>
+      : Primitive;
   };
 }
-
-// 逆の方が良さそう
-// 任意のオブジェクトを引数に、それをベースにした型定義アノテーションを作らせる
