@@ -1,5 +1,4 @@
 import { AnnotationBase } from "./annotationPropety";
-import { ValueOf } from "../metatypes";
 
 export interface NumberArg extends AnnotationBase {
   min?: number;
@@ -23,18 +22,16 @@ export interface Troop extends DataIndexArg<"troop"> {}
 export interface Class extends DataIndexArg<"class"> {}
 export interface State extends DataIndexArg<"state"> {}
 export interface CommonEvent extends DataIndexArg<"common_event"> {}
-export type Primitive_Numbers = ValueOf<
-  [
-    NumberArg,
-    Actor,
-    Switch,
-    Armor,
-    Skill,
-    Item,
-    WakeLock,
-    Troop,
-    Class,
-    State,
-    CommonEvent
-  ]
->;
+export type Primitive_Numbers = [
+  NumberArg,
+  Actor,
+  Switch,
+  Armor,
+  Skill,
+  Item,
+  WakeLock,
+  Troop,
+  Class,
+  State,
+  CommonEvent
+][number];

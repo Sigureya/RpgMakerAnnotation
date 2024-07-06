@@ -22,4 +22,9 @@ export interface ComboAnnotation extends AnnotationBase {
   options: string[];
 }
 
-export type Primitive_Strings = ValueOf<[]>;
+export type Primitive_Strings = [
+  StringArg,
+  MultilineString,
+  FilePathAnnotation,
+  ComboAnnotation
+][number];

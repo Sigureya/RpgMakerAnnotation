@@ -11,12 +11,18 @@ import {
   Troop,
   Weapon,
 } from "./numbers";
-import { StringArg } from "./strings";
+import { ComboAnnotation, MultilineString, StringArg } from "./strings";
 
 export const ANNOTATION_STRING: StringArg = {
   type: "string",
   default: "",
 } as const;
+
+export const ANNOTATION_MULTILINE_STRING: MultilineString = {
+  type: "multiline_string",
+  default: "",
+} as const;
+
 export const ANNOTATION_NUMBER: NumberArg = {
   type: "number",
   default: 0,
@@ -70,4 +76,10 @@ export const ANNOTATION_STATE: State = {
 export const ANNOTATION_COMMON_EVENT: CommonEvent = {
   type: "common_event",
   default: 0,
+} as const;
+
+export const ANNOTATION_COMBO: ComboAnnotation = {
+  type: "combo",
+  default: "",
+  options: [],
 } as const;
