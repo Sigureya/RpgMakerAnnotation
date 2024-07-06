@@ -1,7 +1,6 @@
-import type { ValueOf } from "./types";
-import type * as P from "./primitive";
+import type { ValueOf } from "./metatypes";
+import type * as P from "./primitive/primitive";
 import type { ToArrayAnnotation } from "./templates";
-import type { Annotation } from "./annotation";
 
 export type TypeTable_Primitive = {
   actor: P.Actor;

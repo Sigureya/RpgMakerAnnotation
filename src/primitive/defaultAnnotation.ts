@@ -1,4 +1,4 @@
-import type { Annotation } from "./annotation";
+import type { Annotation } from "../annotation";
 
 export const ANNOTATION_DEFAULT_STRING: Annotation<string> = {
   type: "string",

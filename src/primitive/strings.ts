@@ -1,4 +1,4 @@
-import { AnnotationBaseWidhDefault } from "src/annotationPropety";
+import { AnnotationBaseWidhDefault } from "./annotationPropety";
 
 export interface StringAnnotation extends AnnotationBaseWidhDefault {
   type: "string";

@@ -1,0 +1,32 @@
+
+Struct<T>
+
+多様することになるので、これを基礎にする
+ネストもあり得る
+
+
+StructArray<T>
+@type strcut<T>[]に対応する記述
+
+ts側での記述は以下のようになる
+{
+ type:STRUCT,
+ default:[]
+}
+
+変換方法
+Annotation<object[]>→StructArray<T>へ流す
+なお、Arrayもobjectなので、分岐には工夫が必要
+Annotation<number>→Primitive<number>
+
+まずPrimitiveをチェック
+該当しなければarrayをチェック→再帰して掘り進む
+
+objectへの対処はケースバイケース。
+
+sturctの場合は再帰的に掘り進む
+
+Param<T>も必要か
+
+Record<string,Param<unknow>>なテーブル
+
