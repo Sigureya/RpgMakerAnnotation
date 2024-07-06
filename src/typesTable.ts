@@ -1,0 +1,27 @@
+import type { ValueOf } from "./types";
+import type * as P from "./primitive";
+import type { ToArrayAnnotation } from "./templates";
+import type { Annotation } from "./annotation";
+
+export type TypeTable_Primitive = {
+  actor: P.Actor;
+  class: P.Class;
+  skill: P.Skill;
+  number: P.NumberArg;
+  combo: P.ComboAnnotation;
+  string: P.StringAnnotation;
+  multiline_string: P.MultilineString;
+  select: P.Select;
+  boolean: P.BooleanAnnotation;
+  common_event: P.CommonEvent;
+};
+
+export type TypeTable_Array = {
+  [Key in keyof TypeTable_Primitive]: ToArrayAnnotation<
+    TypeTable_Primitive[Key]
+  >;
+};
+
+export type AnnotationTypes =
+  | ValueOf<TypeTable_Primitive>
+  | ValueOf<TypeTable_Array>;
