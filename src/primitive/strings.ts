@@ -1,3 +1,4 @@
+import { ValueOf } from "src/metatypes";
 import { AnnotationBase } from "./annotationPropety";
 
 export interface StringArg extends AnnotationBase {
@@ -20,3 +21,5 @@ export interface ComboAnnotation extends AnnotationBase {
   type: "combo";
   options: string[];
 }
+
+export type Primitive_Strings = ValueOf<[]>;
