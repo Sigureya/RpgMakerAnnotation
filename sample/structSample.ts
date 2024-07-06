@@ -1,8 +1,9 @@
 import { Person, Family } from "./person2";
 
-import { Struct5 } from "../src/struct";
+import { Struct } from "../src/struct";
+import { Primitive_Numbers } from "../src/primitive";
 
-const structPerson: Struct5<Person> = {
+const structPerson: Struct<Person> = {
   structName: "Person",
   params: {
     age: { type: "number", default: 0 },
@@ -28,7 +29,7 @@ function createDefault<T extends ParamConcept>(params: T) {
 //const ddd = createDefault(structPerson.params);
 
 //T[]の場合をうまく乗り切る方法
-const structFamiry: Struct5<Family> = {
+const structFamiry: Struct<Family> = {
   structName: "Family",
   params: {
     guest: { ...structPerson },
@@ -43,6 +44,11 @@ const structFamiry: Struct5<Family> = {
     },
   },
 } as const;
+
+const nnn: Primitive_Numbers = {
+  type: "armor",
+  default: 0,
+};
 // const fall:Struct5<number>={
 // }
 //type:"array"
