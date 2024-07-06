@@ -32,7 +32,12 @@ function createDefault<T extends ParamConcept>(params: T) {
 const structFamiry: Struct<Family> = {
   structName: "Family",
   params: {
-    guest: { ...structPerson },
+    guest: {
+      type: "struct",
+      struct: structPerson,
+      text: "ゲスト",
+      default: { age: 17, name: "" },
+    },
     member: {
       type: "array",
       array: structPerson,
