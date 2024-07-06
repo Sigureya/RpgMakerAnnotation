@@ -7,12 +7,12 @@ export * from "./numbers";
 export * from "./strings";
 export * from "./constatns";
 
-export type Primitive<T> = T extends number
+export type Primitive<T> = boolean extends T
+  ? BooleanAnnotation
+  : T extends number
   ? Primitive_Numbers
   : T extends string
   ? Primitive_Strings
-  : boolean extends T
-  ? BooleanAnnotation
   : never;
 {
 }
