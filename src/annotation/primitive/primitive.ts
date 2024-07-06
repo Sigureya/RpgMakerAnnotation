@@ -7,15 +7,3 @@ export interface BooleanAnnotation extends AnnotationBase {
   on?: string;
   off?: string;
 }
-interface ValuePair<T> {
-  option: string;
-  value: T;
-}
-
-interface SelectAnnotation<T extends number | string> extends AnnotationBase {
-  type: "select";
-  default: T;
-  options: ValuePair<T>[];
-}
-
-export type Select = SelectAnnotation<number> | SelectAnnotation<string>;
