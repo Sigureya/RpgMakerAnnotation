@@ -1,4 +1,4 @@
-import type { AnnotationBase } from "./annotationPropety";
+import type { AnnotationBase } from "./annotationBase";
 export * from "./numbers";
 export * from "./strings";
 export interface BooleanAnnotation extends AnnotationBase {

@@ -1,5 +1,4 @@
-import { ValueOf } from "src/metatypes";
-import { AnnotationBase } from "./annotationPropety";
+import { AnnotationBase } from "./annotationBase";
 
 export interface StringArg extends AnnotationBase {
   type: "string";

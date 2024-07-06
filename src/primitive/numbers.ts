@@ -1,4 +1,4 @@
-import { AnnotationBase } from "./annotationPropety";
+import { AnnotationBase } from "./annotationBase";
 
 export interface NumberArg extends AnnotationBase {
   min?: number;

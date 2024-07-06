@@ -1,4 +1,4 @@
-import { AnnotationBaseWidhDefault } from "./primitive/annotationPropety";
+import { AnnotationBaseWidhDefault } from "./primitive/annotationBase";
 
 export interface IStrcutArray {
   default: unknown[];
