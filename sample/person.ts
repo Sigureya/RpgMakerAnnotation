@@ -1,7 +1,7 @@
 // TODO:struct<Person>で、Schema用のオブジェクトを書ける構造にしたい
 
 import { AnnotationBase } from "src/primitive/annotationBase";
-import type { Annotation, Struct6 } from "../src/annotation";
+import type { Annotation, Struct6 } from "../src/annotationOld";
 
 // ツクールの@paramとか用の
 export interface Person {

@@ -1,4 +1,4 @@
-import { Annotation } from "./annotation";
+import { Annotation } from "./annotationOld";
 import type { AnnotationTypes } from "./typesTable";
 
 export interface StructBase {

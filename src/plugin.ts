@@ -1,4 +1,4 @@
-import type { Annotation, Struct } from "./annotation";
+import type { Annotation, Struct } from "./annotationOld";
 export interface StructSimple {
   struct: string;
   params: null;
