@@ -1,13 +1,13 @@
-import { Annotation } from "./annotationBase";
+import { AnnotationBase } from "./annotationBase";
 import { Select } from "./select";
-export interface NumberArg extends Annotation {
+export interface NumberArg extends AnnotationBase {
   min?: number;
   max?: number;
   digit?: number;
   default: number;
   type: "number";
 }
-export interface DataIndexArg<Name extends string> extends Annotation {
+export interface DataIndexArg<Name extends string> extends AnnotationBase {
   type: Name;
   default: number;
 }
@@ -22,6 +22,7 @@ export interface Troop extends DataIndexArg<"troop"> {}
 export interface Class extends DataIndexArg<"class"> {}
 export interface State extends DataIndexArg<"state"> {}
 export interface CommonEvent extends DataIndexArg<"common_event"> {}
+export interface NumberSelect extends Select<number> {}
 export type Primitive_Numbers = [
   NumberArg,
   Actor,
@@ -34,5 +35,5 @@ export type Primitive_Numbers = [
   Class,
   State,
   CommonEvent,
-  Select<number>
+  NumberSelect
 ][number];
