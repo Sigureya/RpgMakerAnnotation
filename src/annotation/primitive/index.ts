@@ -16,3 +16,8 @@ export type Primitive<T> = boolean extends T
   : never;
 {
 }
+
+export type PrimitiveAll =
+  | BooleanAnnotation
+  | Primitive_Numbers
+  | Primitive_Strings;
