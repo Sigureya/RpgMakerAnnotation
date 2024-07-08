@@ -1,5 +1,7 @@
 import { AnnotationBase } from "./annotationBase";
+import { ToArrayAnnotation } from "./primitiveArray";
 import { Select } from "./select";
+
 export interface NumberArg extends AnnotationBase {
   min?: number;
   max?: number;
@@ -23,7 +25,7 @@ export interface Class extends DataIndexArg<"class"> {}
 export interface State extends DataIndexArg<"state"> {}
 export interface CommonEvent extends DataIndexArg<"common_event"> {}
 export interface NumberSelect extends Select<number> {}
-export type Primitive_Numbers = [
+type List = [
   NumberArg,
   Actor,
   Switch,
@@ -36,4 +38,7 @@ export type Primitive_Numbers = [
   State,
   CommonEvent,
   NumberSelect
-][number];
+];
+
+export type Primitive_Numbers = List[number];
+export type Primitive_NumbersArray = ToArrayAnnotation<Primitive_Numbers>;

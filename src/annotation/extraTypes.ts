@@ -1,22 +1,27 @@
 import { ReomoveArray } from "../metatypes";
-import { AnnotationBase, Primitive, PrimitiveAll } from "./primitive";
+import {
+  AnnotationBase,
+  Primitive,
+  Primitive_Numbers,
+  Primitive_Strings,
+  BooleanAnnotation,
+  Primitive_NumbersArray,
+  Primitive_StringsArray,
+} from "./primitive";
 export interface StructBase {
   structName: string;
   params: ParameterBase;
 }
 export interface ParameterBase extends Record<string, Annotation> {}
 export type Annotation =
-  | PrimitiveAll
   | Type_Array<object>
   | Type_Struct<object>
-  | Type_PrimitiveArray<boolean>
-  | Type_PrimitiveArray<string>
-  | Type_PrimitiveArray<number>;
-
-export interface Type_PrimitiveArray<T> extends AnnotationBase {
-  type: `${Primitive<T>["type"]}[]`;
-  default: Primitive<T>["default"][];
-}
+  | BooleanAnnotation
+  | Primitive_Numbers
+  | Primitive_NumbersArray
+  | Primitive_Strings
+  | Primitive_StringsArray;
+// | ToArrayAnnotation<AnnotationBase>;
 
 export interface Type_Array<
   T extends object,

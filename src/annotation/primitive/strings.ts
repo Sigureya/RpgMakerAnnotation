@@ -1,4 +1,5 @@
 import { AnnotationBase } from "./annotationBase";
+import { ToArrayAnnotation } from "./primitiveArray";
 
 export interface StringArg extends AnnotationBase {
   type: "string";
@@ -27,3 +28,5 @@ export type Primitive_Strings = [
   FilePathAnnotation,
   ComboAnnotation
 ][number];
+
+export type Primitive_StringsArray = ToArrayAnnotation<Primitive_Strings>;

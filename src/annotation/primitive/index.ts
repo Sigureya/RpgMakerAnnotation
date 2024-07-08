@@ -1,13 +1,14 @@
-import { Primitive_Numbers } from "./numbers";
+import { Primitive_Numbers, Primitive_NumbersArray } from "./numbers";
 import { BooleanAnnotation } from "./boolean";
-import { Primitive_Strings } from "./strings";
+import { Primitive_Strings, Primitive_StringsArray } from "./strings";
 
 export * from "./annotationBase";
 export * from "./numbers";
 export * from "./strings";
 export * from "./constatns";
+export * from "./boolean";
 
-export type Primitive<T> = boolean extends T
+export type Primitive<T extends boolean | number | string> = boolean extends T
   ? BooleanAnnotation
   : T extends number
   ? Primitive_Numbers
@@ -17,7 +18,10 @@ export type Primitive<T> = boolean extends T
 {
 }
 
-export type PrimitiveAll =
-  | BooleanAnnotation
-  | Primitive_Numbers
-  | Primitive_Strings;
+export type PrimitiveArray<T extends number[] | string[]> = T extends number[]
+  ? Primitive_NumbersArray
+  : T extends string[]
+  ? Primitive_StringsArray
+  : never;
+{
+}
