@@ -1,5 +1,5 @@
 import { Primitive_Numbers } from "./numbers";
-import { BooleanAnnotation } from "./primitive";
+import { BooleanAnnotation } from "./boolean";
 import { Primitive_Strings } from "./strings";
 
 export * from "./annotationBase";
