@@ -3,6 +3,7 @@ import {
   Primitive_Numbers,
   AnnotationBase,
   Primitive_NumbersArray,
+  Annotation,
 } from "../src/annotation";
 import { ToArrayAnnotation } from "../src/annotation/primitive/primitiveArray";
 
@@ -15,7 +16,11 @@ export interface NameList {
 //   type: unknown;
 // }
 
-function antTest(ant: AnnotationBase) {}
+function antTest(ant: Annotation) {
+  ant.default;
+  if (ant.type === "struct") {
+  }
+}
 
 //const ex:Remove
 //keyofで取得した後、typeとdefaultを除去
