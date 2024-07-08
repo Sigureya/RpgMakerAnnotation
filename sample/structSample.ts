@@ -1,7 +1,7 @@
 import { Person, Family } from "./person2";
 
-import { Struct } from "../src/annotation/struct";
-import { Primitive_Numbers } from "../src/annotation/primitive";
+import { Struct } from "../src/schema/struct";
+import { Primitive_Numbers } from "../src/schema/primitive";
 
 const structPerson: Struct<Person> = {
   structName: "Person",

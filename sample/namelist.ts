@@ -4,8 +4,8 @@ import {
   AnnotationBase,
   Primitive_NumbersArray,
   Annotation,
-} from "../src/annotation";
-import { ToArrayAnnotation } from "../src/annotation/primitive/primitiveArray";
+} from "../src/schema";
+import { ToArrayAnnotation } from "../src/schema/primitive/primitiveArray";
 
 export interface NameList {
   list: string[];

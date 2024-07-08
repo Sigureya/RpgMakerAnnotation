@@ -1,5 +1,5 @@
 import { Person } from "../sample/person2";
-import * as aa from "../src/annotation";
+import * as aa from "../src/schema";
 
 const structPerson: aa.Struct<Person> = {
   params: {

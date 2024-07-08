@@ -1,4 +1,4 @@
-import { ANNOTATION_TABLE_STRING, PluginCommand } from "../src/annotation";
+import { ANNOTATION_TABLE_STRING, PluginCommand } from "../src/schema";
 import { Person } from "./person2";
 
 export const newParson: PluginCommand<Person> = {

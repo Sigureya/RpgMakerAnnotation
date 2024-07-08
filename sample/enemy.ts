@@ -3,7 +3,7 @@ import {
   ANNOTATION_SKILL,
   ANNOTATION_TABLE_STRING,
   Struct,
-} from "../src/annotation";
+} from "../src/schema";
 
 export interface SkillCondition {
   id: number;
