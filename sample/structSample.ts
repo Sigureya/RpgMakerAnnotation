@@ -39,7 +39,7 @@ const structFamiry: Struct<Family> = {
       default: { age: 17, name: "" },
     },
     member: {
-      type: "array",
+      type: "struct[]",
       array: structPerson,
       default: [{ age: 5, name: "Nohara Shinnosuke" }],
     },

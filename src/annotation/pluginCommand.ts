@@ -1,4 +1,5 @@
-import { Parameter, ParameterBase, Struct } from "./struct";
+import { ParameterBase } from "./extraTypes";
+import { Parameter } from "./struct";
 
 export interface PluginCommandBase {
   commandName: string;

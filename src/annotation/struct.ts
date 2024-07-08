@@ -1,35 +1,32 @@
 import { ReomoveArray } from "../metatypes";
-import { AnnotationBase, Primitive } from "./primitive";
+import { Primitive } from "./primitive";
+import { RemoveTypeAndDefault } from "./utils/removeTypeAndDefault";
+import {
+  StructBase,
+  Type_Array,
+  Type_PrimitiveArray,
+  Type_Struct,
+} from "./extraTypes";
 
-export interface ParameterBase extends Record<string, AnnotationBase> {}
-export interface StructBase {
-  structName: string;
-  params: ParameterBase;
+interface Dummy {
+  dummy: number;
 }
-
-interface Type_Array<T, ArrayAnnotation extends StructBase>
-  extends AnnotationBase {
-  type: "array";
-  array: ArrayAnnotation;
-  //もしTが配列だと複雑化するので、常に配列を解除する
-  default: ReomoveArray<T>[];
-}
-
-interface Type_Struct<T, StructAnnotation extends StructBase>
-  extends AnnotationBase {
-  type: "struct";
-  struct: StructAnnotation;
-  default: T;
-}
-//↑上記の2クラスはStruct<>に直接は触れないようにし、再起を単純にする
+type PrimitiveTypes = number | string | boolean;
+type EX2<T> = {
+  [Key in Exclude<keyof T, "type" | "default">]?: T[Key];
+};
 
 export interface Struct<T extends object> extends StructBase {
   params: {
-    [Key in keyof T]: T[Key] extends object[]
+    [Key in keyof T]: T[Key] extends PrimitiveTypes
+      ? Primitive<T[Key]>
+      : T[Key] extends PrimitiveTypes[]
+      ? Type_PrimitiveArray<T[Key][number]> /*& EX2<Primitive<T[Key][number]>>*/
+      : T[Key] extends object[]
       ? Type_Array<T[Key], Struct<ReomoveArray<T[Key]>>>
       : T[Key] extends object
       ? Type_Struct<T[Key], Struct<T[Key]>>
-      : Primitive<T[Key]>;
+      : never;
   };
 }
 

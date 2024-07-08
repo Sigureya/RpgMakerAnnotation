@@ -6,20 +6,20 @@ import {
   CommonEvent,
   Item,
   NumberArg,
+  NumberSelect,
   Skill,
   State,
   Switch,
   Troop,
   Weapon,
 } from "./numbers";
-import { Select } from "./select";
 
-export const ANNOTATION_STRING: StringArg = {
+const ANNOTATION_STRING: StringArg = {
   type: "string",
   default: "",
 } as const;
 
-export const ANNOTATION_MULTILINE_STRING: MultilineString = {
+const ANNOTATION_MULTILINE_STRING: MultilineString = {
   type: "multiline_string",
   default: "",
 } as const;
@@ -85,8 +85,13 @@ export const ANNOTATION_COMBO: ComboAnnotation = {
   options: [],
 } as const;
 
-export const ANNOTATION_SELECT_NUMBER: Select<number> = {
+export const ANNOTATION_SELECT_NUMBER: NumberSelect = {
   type: "select",
   default: 0,
   options: [],
-};
+} as const;
+export const ANNOTATION_TABLE_STRING = {
+  string: ANNOTATION_STRING,
+  combo: ANNOTATION_COMBO,
+  multiline_string: ANNOTATION_MULTILINE_STRING,
+} as const;

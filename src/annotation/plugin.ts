@@ -1,5 +1,4 @@
-import { AnnotationBase } from "./primitive";
-import { StructBase } from "./struct";
+import { Annotation, StructBase } from "./extraTypes";
 
 export function createLine<ElementName extends string>(
   elementName: ElementName,
@@ -8,11 +7,20 @@ export function createLine<ElementName extends string>(
   return text ? (`@${elementName} ${text}\n` as const) : "";
 }
 
-export function createParam(paramName: string, ant: AnnotationBase) {
+function getTypename(ant: Annotation) {
+  switch (ant.type) {
+    case "struct":
+      return `struct<${ant.struct.structName}>` as const;
+    case "struct[]":
+      return `struct<${ant.array.structName}>[]` as const;
+  }
+  return ant.type;
+}
+export function createParam(paramName: string, ant: Annotation) {
   const param = createLine("param", paramName);
   const desc = createLine("desc", ant.text);
   const text = createLine("text", ant.text);
-  const type = createLine("type", ant.type);
+  const type = createLine("type", getTypename(ant));
   const parent = createLine("parent", ant.parent);
   const default_ = createLine(
     "default",
@@ -22,7 +30,7 @@ export function createParam(paramName: string, ant: AnnotationBase) {
 }
 
 export function createSturct(struct: StructBase) {
-  const list: string[] = Object.entries(struct.params).flatMap((item) => {
+  const list = Object.entries(struct.params).flatMap((item) => {
     return createParam(item[0], item[1]);
   });
   const params = list.join();

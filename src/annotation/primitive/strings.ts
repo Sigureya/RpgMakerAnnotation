@@ -1,21 +1,21 @@
-import { Annotation } from "./annotationBase";
+import { AnnotationBase } from "./annotationBase";
 
-export interface StringArg extends Annotation {
+export interface StringArg extends AnnotationBase {
   type: "string";
   default: string;
 }
 
-export interface MultilineString extends Annotation {
+export interface MultilineString extends AnnotationBase {
   type: "multiline_string";
   default: string;
 }
 
-export interface FilePathAnnotation extends Annotation {
+export interface FilePathAnnotation extends AnnotationBase {
   type: "file";
   default: string;
   dir: string;
 }
-export interface ComboAnnotation extends Annotation {
+export interface ComboAnnotation extends AnnotationBase {
   default: string;
   type: "combo";
   options: string[];
