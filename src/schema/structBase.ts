@@ -26,7 +26,7 @@ export interface Type_Array<
   ArrayAnnotation extends StructBase = StructBase
 > extends AnnotationBase {
   type: "struct[]";
-  array: ArrayAnnotation;
+  struct: ArrayAnnotation;
   //もしTが配列だと複雑化するので、常に配列を解除する
   default: ReomoveArray<T>[];
 }
