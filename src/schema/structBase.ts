@@ -12,8 +12,8 @@ export interface StructBase {
 }
 export interface ParameterBase extends Record<string, Annotation> {}
 export type Annotation =
-  | Type_Array<{}[]>
-  | Type_Struct<{}>
+  | Type_Array<object[]>
+  | Type_Struct<object>
   | BooleanAnnotation
   | Primitive_Numbers
   | Primitive_NumbersArray
@@ -25,7 +25,7 @@ export interface HasStruct extends AnnotationBase {
 }
 
 export interface Type_Array<
-  Array extends {}[],
+  Array extends object[],
   ArrayAnnotation extends StructBase = StructBase
 > extends HasStruct {
   type: "struct[]";

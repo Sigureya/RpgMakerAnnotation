@@ -1,7 +1,7 @@
 import { Primitive, PrimitiveArray } from "./primitive";
 import { StructBase, Type_Array, Type_Struct } from "./structBase";
 
-export interface Struct<T extends {}> extends StructBase {
+export interface Struct<T extends object> extends StructBase {
   params: {
     [Key in keyof T]: T[Key] extends number | string | boolean
       ? Primitive<T[Key]>
