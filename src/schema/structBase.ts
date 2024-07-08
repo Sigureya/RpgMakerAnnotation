@@ -1,4 +1,3 @@
-import { ReomoveArray } from "../metatypes";
 import {
   AnnotationBase,
   Primitive_Numbers,
@@ -13,28 +12,31 @@ export interface StructBase {
 }
 export interface ParameterBase extends Record<string, Annotation> {}
 export type Annotation =
-  | Type_Array<object>
-  | Type_Struct<object>
+  | Type_Array<{}[]>
+  | Type_Struct<{}>
   | BooleanAnnotation
   | Primitive_Numbers
   | Primitive_NumbersArray
   | Primitive_Strings
   | Primitive_StringsArray;
 
+export interface HasStruct extends AnnotationBase {
+  struct: StructBase;
+}
+
 export interface Type_Array<
-  T extends object,
+  Array extends {}[],
   ArrayAnnotation extends StructBase = StructBase
-> extends AnnotationBase {
+> extends HasStruct {
   type: "struct[]";
   struct: ArrayAnnotation;
-  //もしTが配列だと複雑化するので、常に配列を解除する
-  default: ReomoveArray<T>[];
+  default: Array;
 }
 
 export interface Type_Struct<
-  T,
+  T extends {},
   StructAnnotation extends StructBase = StructBase
-> extends AnnotationBase {
+> extends HasStruct {
   type: "struct";
   struct: StructAnnotation;
   default: T;
