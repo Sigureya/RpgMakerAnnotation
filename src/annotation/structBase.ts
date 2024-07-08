@@ -1,7 +1,6 @@
 import { ReomoveArray } from "../metatypes";
 import {
   AnnotationBase,
-  Primitive,
   Primitive_Numbers,
   Primitive_Strings,
   BooleanAnnotation,
@@ -21,7 +20,6 @@ export type Annotation =
   | Primitive_NumbersArray
   | Primitive_Strings
   | Primitive_StringsArray;
-// | ToArrayAnnotation<AnnotationBase>;
 
 export interface Type_Array<
   T extends object,

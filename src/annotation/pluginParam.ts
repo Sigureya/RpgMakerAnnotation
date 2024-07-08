@@ -1,4 +1,4 @@
-import { ParameterBase } from "./extraTypes";
+import { ParameterBase } from "./structBase";
 import { Parameter } from "./struct";
 
 export interface PluginBase {
