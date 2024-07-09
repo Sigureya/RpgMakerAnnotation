@@ -72,6 +72,7 @@ function createMember<T>(t: T) {
 }
 
 function createParams<T extends object>(obj: T): Struct<T>["params"] {
+  // TODO:必要性も含めて検討する
   return {};
 }
 
