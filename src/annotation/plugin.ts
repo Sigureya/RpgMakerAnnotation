@@ -1,4 +1,4 @@
-import { Annotation, StructBase } from "./structBase";
+import { Annotation, StructBase } from "../schema/structBase";
 
 export function createLine<ElementName extends string>(
   elementName: ElementName,
@@ -12,7 +12,7 @@ function getTypename(ant: Annotation) {
     case "struct":
       return `struct<${ant.struct.structName}>` as const;
     case "struct[]":
-      return `struct<${ant.array.structName}>[]` as const;
+      return `struct<${ant.struct.structName}>[]` as const;
   }
   return ant.type;
 }

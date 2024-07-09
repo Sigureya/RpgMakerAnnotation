@@ -33,7 +33,7 @@ export const STRUCT_ENEMY: Struct<Enemy> = {
     mp: ANNOTATION_NUMBER,
     skills: {
       type: "struct[]",
-      array: STRUCT_SKILLCONDTION,
+      struct: STRUCT_SKILLCONDTION,
       default: [],
     },
   },

@@ -1,9 +1,9 @@
-import { Person, Family } from "./person2";
+import { Person, Family, City } from "./person2";
 
 import { Struct } from "../src/schema/struct";
-import { Primitive_Numbers } from "../src/schema/primitive";
+import { ANNOTATION_NUMBER, Primitive_Numbers } from "../src/schema/primitive";
 
-const structPerson: Struct<Person> = {
+export const STRUCT_PERSON: Struct<Person> = {
   structName: "Person",
   params: {
     age: { type: "number", default: 0 },
@@ -11,36 +11,18 @@ const structPerson: Struct<Person> = {
   },
 } as const;
 
-type ParamConcept = Record<string, { default: number | boolean | string }>;
-
-type ResultOf_CreateDefault<T extends ParamConcept> = {
-  [Key in keyof T]: T[Key]["default"];
-};
-
-function createDefault<T extends ParamConcept>(params: T) {
-  const members = Object.entries(params).map((ent) => {
-    return {
-      [ent[0]]: ent[1]["default"],
-    };
-  });
-  return Object.assign({}, ...members) as ResultOf_CreateDefault<T>;
-}
-
-//const ddd = createDefault(structPerson.params);
-
-//T[]の場合をうまく乗り切る方法
-const structFamiry: Struct<Family> = {
+export const STRUCT_FAMIRY: Struct<Family> = {
   structName: "Family",
   params: {
     guest: {
       type: "struct",
-      struct: structPerson,
+      struct: STRUCT_PERSON,
       text: "ゲスト",
       default: { age: 17, name: "" },
     },
     member: {
       type: "struct[]",
-      array: structPerson,
+      struct: STRUCT_PERSON,
       default: [{ age: 5, name: "Nohara Shinnosuke" }],
     },
     address: {
@@ -50,16 +32,48 @@ const structFamiry: Struct<Family> = {
   },
 } as const;
 
-const nnn: Primitive_Numbers = {
-  type: "armor",
-  default: 0,
-};
-// const fall:Struct5<number>={
-// }
-//type:"array"
-//array:DEF
+export const STRUCT_CITY: Struct<City> = {
+  structName: "City",
+  params: {
+    fimilys: {
+      type: "struct[]",
+      struct: STRUCT_FAMIRY,
+      default: [],
+    },
+    position: {
+      type: "struct",
+      default: {
+        x: 0,
+        y: 0,
+      },
+      struct: {
+        structName: "Position",
+        params: {
+          x: ANNOTATION_NUMBER,
+          y: ANNOTATION_NUMBER,
+        },
+      },
+    },
 
-//type:"struct"
-//struct:DEF
+    road: {
+      type: "struct[]",
+      default: [],
+      struct: {
+        structName: "Road",
+        params: {
+          distance: {
+            type: "number",
+            default: 0,
+          },
+        },
+      },
+    },
+  },
+} as const;
 
-//この形に落とし込めば、インターフェースは統一できる
+const TYPE_LIST = [STRUCT_CITY, STRUCT_FAMIRY, STRUCT_PERSON] as const;
+function listEx<T extends ReadonlyArray<Struct<{}>>>(list: T) {
+  return [...list] as const;
+}
+
+const list2 = listEx(TYPE_LIST);

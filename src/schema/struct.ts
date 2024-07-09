@@ -7,9 +7,9 @@ export interface Struct<T extends object> extends StructBase {
       ? Primitive<T[Key]>
       : T[Key] extends number[] | string[]
       ? PrimitiveArray<T[Key]>
-      : T[Key] extends {}[]
+      : T[Key] extends object[]
       ? Type_Array<T[Key], Struct<T[Key][number]>>
-      : T[Key] extends {}
+      : T[Key] extends object
       ? Type_Struct<T[Key], Struct<T[Key]>>
       : never;
   };
