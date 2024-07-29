@@ -1,28 +1,35 @@
 import { Struct } from "./schema/struct";
 import { Annotation, ParameterBase, StructBase } from "./schema/structBase";
 
-function paramEntires(params: ParameterBase): Annotation[] {
-  const list = Object.values<Annotation>(params);
-  return list.filter((ant) => ant.type === "struct" || ant.type === "struct[]");
+function obtainParams(params: ParameterBase): StructBase[] {
+  return Object.values<Annotation>(params).flatMap((ant) => {
+    return ant.type === "struct" || ant.type === "struct[]" ? [ant.struct] : [];
+  });
 }
 
 function recursiveEntires(
-  anotation: Annotation,
-  set: ReadonlySet<Annotation>,
+  struct: StructBase,
+  set: ReadonlySet<StructBase>,
   depth: number
-): Annotation[] {
-  const params: Annotation[] =
-    depth < 100 &&
-    (anotation.type === "struct" || anotation.type === "struct[]")
-      ? paramEntires(anotation.struct.params)
-      : [];
-  const newSet = new Set([...set, ...params]);
+): StructBase[] {
+  const childParams: StructBase[] =
+    depth < 100 ? obtainParams(struct.params) : [];
+  const newSet: ReadonlySet<StructBase> = new Set([...set, ...childParams]);
 
-  return params.flatMap((a) => recursiveEntires(a, newSet, depth + 1));
+  const grandchildParams = childParams.flatMap((structDefine) =>
+    recursiveEntires(structDefine, newSet, depth + 1)
+  );
+  return [...grandchildParams, ...childParams];
 }
 
-export function entires<T extends object>(struct: Struct<T>): Annotation[] {
-  const params = paramEntires(struct.params);
-  const set: ReadonlySet<Annotation> = new Set(params);
-  return params.flatMap((ant) => recursiveEntires(ant, set, 0));
+export function extractStructs<T extends object>(
+  struct: Struct<T>
+): Set<StructBase> {
+  const set: ReadonlySet<StructBase> = new Set(obtainParams(struct.params));
+  const types = Array.from(set).flatMap((ant) => recursiveEntires(ant, set, 0));
+  return new Set([...types, ...set]);
+}
+
+export function extractParams(params: ParameterBase) {
+  return Object.values<Annotation>(params);
 }
