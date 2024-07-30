@@ -1,7 +1,10 @@
 import { Person, Family, City } from "./person2";
 
-import { Struct } from "../src/schema/struct";
-import { ANNOTATION_NUMBER, Primitive_Numbers } from "../src/schema/primitive";
+import { Struct } from "../src/struct/schema/struct";
+import {
+  ANNOTATION_NUMBER,
+  Primitive_Numbers,
+} from "../src/struct/schema/primitive";
 
 export const STRUCT_PERSON: Struct<Person> = {
   structName: "Person",

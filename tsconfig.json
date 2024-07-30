@@ -25,7 +25,7 @@
   "include": [
     "src/*.ts",
     "sample/person.ts",
-    "src/schema/struct.ts",
+    "src/struct/schema/struct.ts",
     "src/annotation/structToFlat.ts"
   ],
   "exclude": ["game/js/plugins/exclude/**/*.js"]
