@@ -1,13 +1,13 @@
 import { Struct } from "./schema/struct";
 import { Annotation, ParameterBase, StructBase } from "./schema/structBase";
 
-function obtainParams(params: ParameterBase): StructBase[] {
+export function obtainParams(params: ParameterBase): StructBase[] {
   return Object.values<Annotation>(params).flatMap((ant) => {
     return ant.type === "struct" || ant.type === "struct[]" ? [ant.struct] : [];
   });
 }
 
-function recursiveEntires(
+export function recursiveEntires(
   struct: StructBase,
   set: ReadonlySet<StructBase>,
   depth: number
