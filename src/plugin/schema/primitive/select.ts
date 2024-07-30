@@ -10,3 +10,6 @@ export interface Select<T extends number | string> extends AnnotationBase {
   default: T;
   options: ValuePair<T>[];
 }
+
+export interface NumberSelect extends Select<number> {}
+export interface StringSelect extends Select<string> {}

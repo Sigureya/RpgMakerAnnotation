@@ -1,6 +1,6 @@
 import { AnnotationBase } from "./annotationBase";
 import { ToArrayAnnotation } from "./primitiveArray";
-import { Select } from "./select";
+import { StringSelect } from "./select";
 
 export interface StringArg extends AnnotationBase {
   type: "string";
@@ -22,8 +22,6 @@ export interface ComboAnnotation extends AnnotationBase {
   type: "combo";
   options: string[];
 }
-
-export interface StringSelect extends Select<string> {}
 
 export type Primitive_Strings = [
   StringArg,
