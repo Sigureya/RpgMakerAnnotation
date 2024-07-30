@@ -1,5 +1,5 @@
 import { City } from "../../sample/person2";
-import { Struct } from "../schema";
+import { Struct } from "../plugin/schema";
 
 type ReomoveArray<T> = T extends unknown[] ? T[number] : T;
 
