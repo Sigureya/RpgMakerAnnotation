@@ -3,10 +3,10 @@ import { BooleanAnnotation } from "./boolean";
 import { Primitive_Strings, Primitive_StringsArray } from "./strings";
 
 export * from "./annotationBase";
+export * from "./boolean";
+export * from "./constatns";
 export * from "./numbers";
 export * from "./strings";
-export * from "./constatns";
-export * from "./boolean";
 
 export type Primitive<T extends boolean | number | string> = boolean extends T
   ? BooleanAnnotation
