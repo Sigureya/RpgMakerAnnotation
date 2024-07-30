@@ -4,7 +4,7 @@ import {
   STRUCT_PERSON,
 } from "../../sample/structSample";
 import { ValueOf } from "../metatypes";
-import { Annotation, HasStruct, Struct, StructBase } from "../struct/schema";
+import { Annotation, HasStruct, Struct, StructBase } from "../plugin/schema";
 import { FlatObject } from "./flatObject";
 
 class StructSet {

@@ -1,5 +1,4 @@
-import { Struct } from "./schema/struct";
-import { Annotation, ParameterBase, StructBase } from "./schema/structBase";
+import { Annotation, ParameterBase, StructBase } from "./schema";
 
 export function obtainParams(params: ParameterBase): StructBase[] {
   return Object.values<Annotation>(params).flatMap((ant) => {
@@ -22,10 +21,10 @@ export function recursiveEntires(
   return [...grandchildParams, ...childParams];
 }
 
-export function extractStructs<T extends object>(
-  struct: Struct<T>
+export function extractStructsFromParameters(
+  params: ParameterBase
 ): Set<StructBase> {
-  const set: ReadonlySet<StructBase> = new Set(obtainParams(struct.params));
+  const set: ReadonlySet<StructBase> = new Set(obtainParams(params));
   const types = Array.from(set).flatMap((ant) => recursiveEntires(ant, set, 0));
   return new Set([...types, ...set]);
 }

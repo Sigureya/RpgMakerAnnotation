@@ -7,7 +7,7 @@ import {
   Struct,
   StructBase,
   Type_Struct,
-} from "../struct/schema";
+} from "../plugin/schema";
 
 function createDefaultFromPrimitive<
   T extends Primitive_Numbers | Primitive_Strings | BooleanAnnotation
