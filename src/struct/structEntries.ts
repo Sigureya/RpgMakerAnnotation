@@ -1,9 +1,5 @@
-import { Struct } from "./struct/schema/struct";
-import {
-  Annotation,
-  ParameterBase,
-  StructBase,
-} from "./struct/schema/structBase";
+import { Struct } from "./schema/struct";
+import { Annotation, ParameterBase, StructBase } from "./schema/structBase";
 
 export function obtainParams(params: ParameterBase): StructBase[] {
   return Object.values<Annotation>(params).flatMap((ant) => {
