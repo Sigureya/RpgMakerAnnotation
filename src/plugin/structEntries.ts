@@ -22,11 +22,16 @@ export function recursiveEntires(
 }
 
 export function extractStructsFromParameters(
-  params: ParameterBase
-): Set<StructBase> {
-  const set: ReadonlySet<StructBase> = new Set(obtainParams(params));
-  const types = Array.from(set).flatMap((ant) => recursiveEntires(ant, set, 0));
-  return new Set([...types, ...set]);
+  paramList: Iterable<ParameterBase>
+) {
+  const result: Set<StructBase> = new Set();
+  for (const iterator of paramList) {
+    const childStructs = obtainParams(iterator).flatMap((s) =>
+      recursiveEntires(s, result, 0)
+    );
+    childStructs.forEach((child) => result.add(child));
+  }
+  return result;
 }
 
 export function extractParams(params: ParameterBase) {
