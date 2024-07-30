@@ -1,4 +1,4 @@
-import { Annotation, StructBase } from "../schema/structBase";
+import { Annotation, StructBase } from "./schema";
 
 export function createLine<ElementName extends string>(
   elementName: ElementName,
