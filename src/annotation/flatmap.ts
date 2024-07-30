@@ -27,12 +27,18 @@ class StructSet {
     members.forEach((m) => this.add(m));
   }
 }
-function extractParams<St extends Struct<object>>(struct: St) {
-  const list = Object.values(struct.params);
+export function extractParams<St extends Struct<object>>(struct: St) {
+  const list = Object.values(struct.params) as Annotation[];
   type Params = St["params"];
   return list.filter(
     (ant) => ant.type === "struct" || ant.type === "struct[]"
   ) as Extract<Params[keyof Params], HasStruct>[];
+}
+
+function saiki2<T extends object>(struct: Struct<T>) {
+  const keys = Object.keys(struct) as Array<keyof Struct<T>>;
+
+  const members = keys.map((k) => struct[k]);
 }
 
 const aa: StructBase[] = extractParams(STRUCT_CITY).map((m) => m.struct);

@@ -1,11 +1,18 @@
-import { Struct, StructBase } from "../src/schema";
+import { Annotation, Struct, StructBase } from "../src/schema";
 import { Person } from "./person2";
+import { extractParams, extractStructs } from "../src/structEntries";
+import { FlatObject } from "../src/annotation/flatObject";
 
-type FlatMap<T extends StructBase> = {
-  [Key in T["structName"]]: T;
-};
-// } & {
-//   [Key in keyof T["structName"]]: null;
-// };
+function atParamFromAnnotationTo(annotation: Annotation) {
+  //  annotation.type ===""
+  //  annotation.
+  //  annotation.
+}
 
-const FLAT: FlatMap<Struct<Person>> = {};
+function build(struct: StructBase) {
+  const params = extractParams(struct.params);
+}
+
+function hoge(struct: Struct<Person>) {
+  const types = extractStructs(struct);
+}

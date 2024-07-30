@@ -38,11 +38,11 @@ const ARR2: Primitive_NumbersArray = {
 
 antTest(ARR2);
 
-const ARRR_EX: ToArrayAnnotation<Primitive_Numbers> = {
+export const ARRR_EX: ToArrayAnnotation<Primitive_Numbers> = {
   default: [],
   type: "number[]",
 };
-const STRUCT_NAMELIST: Struct<NameList> = {
+export const STRUCT_NAMELIST: Struct<NameList> = {
   structName: "NameList",
   params: {
     numbers: {
