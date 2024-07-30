@@ -6,6 +6,7 @@ export * from "./annotationBase";
 export * from "./boolean";
 export * from "./constatns";
 export * from "./numbers";
+export * from "./select";
 export * from "./strings";
 
 export type Primitive<T extends boolean | number | string> = boolean extends T
