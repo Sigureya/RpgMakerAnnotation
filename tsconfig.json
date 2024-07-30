@@ -22,13 +22,5 @@
       "@api/*": ["src/api/*"]
     }
   },
-  "include": [
-    "src/*.ts",
-    "sample/person.ts",
-    "src/plugin/schema/struct.ts",
-    "src/annotation/structToFlat.ts",
-    "src/plugin/structEntries.ts",
-    "src/plugin/structEntries.test.ts"
-  ],
   "exclude": ["game/js/plugins/exclude/**/*.js"]
 }
